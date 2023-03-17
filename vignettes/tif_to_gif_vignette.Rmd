@@ -1,0 +1,71 @@
+---
+title: "How to use tif2gif::tif_to_gif"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{tif_to_gif_vignette}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+Load packages
+```{r setup, messages = FALSE}
+library(tif2gif)
+suppressMessages(library(here))
+```
+
+## Generate a single GIF
+```{r, eval = FALSE}
+# for a list of TIF files that start with "adenfasc"and are located in my "data" folder. 
+tif_to_gif(prefix = "adenfasc", output_name = "landis", output_location = here("data", "output_data"), frames_per_sec = 1, path_to_folder = here("data"), colors = "Greens")
+# output is a single GIF called landis_adenfasc.gif that will show up in my "output_data" folder. The color scheme is green and it runs at a rate of 1 frame per second.  
+```
+
+## Generate multiple GIFs
+
+Set up inputs
+```{r, eval = FALSE}
+# file path defined out of function call so we can reuse it
+my_path <- here("data")
+# yours might look something like this on the Bren computers: "H:/ESM215/ex7/landis_II/burtonmesa/modern-fire/output/max-spp-age/"
+
+# define species and scenarios of interest for prefix and suffix
+species_list <- c("adenfasc", "ceanramu") # prefix
+firescenarios <- c("lowlow", "highhigh") # suffix
+```
+
+Run for various prefixes
+```{r, eval = FALSE}
+pmap(list(prefix = species_list), output_location = here("data", "output_data"), .f = tif_to_gif, output_name = "landismodernfire", frames_per_sec = 1, path_to_folder = my_path, colors = "Greens", suffix = "lowhigh")
+```
+
+Output for Adenostoma fasciculatum:
+```{r, echo = FALSE}
+knitr::include_graphics("../man/figures/landismodernfire_adenfasc_lowhigh.gif", error = FALSE)
+```
+
+Output for Ceanothus ramulosus:
+```{r, echo = FALSE}
+knitr::include_graphics("../man/figures/landismodernfire_ceanramu_lowhigh.gif", error = FALSE)
+```
+
+Run for various suffixes
+```{r, eval = FALSE}
+pmap(prefix = "ceanramu", output_location = here("data", "output_data"), .f = tif_to_gif, output_name = "landismodernfire", frames_per_sec = 1, path_to_folder = my_path, colors = "Greens", list(suffix = firescenarios))
+```
+
+Output for fire scenario low low:
+```{r, echo = FALSE}
+knitr::include_graphics("../man/figures/landismodernfire_ceanramu_lowlow.gif", error = FALSE)
+```
+
+Output for fire scenario high high:
+```{r, echo = FALSE}
+knitr::include_graphics("../man/figures/landismodernfire_ceanramu_highhigh.gif", error = FALSE)
+```
