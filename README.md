@@ -8,7 +8,7 @@ This package contains a function which allows the user to turn a folder of TIF f
 
 To use this package, run these lines:
 library(devtools)
-devtools::install_github("laurenaceae/tif2gif", build_vignettes = TRUE)
+devtools::install_github("laurenaceae/tif2gif", build_vignettes = TRUE, force = TRUE)
 library(tif2gif)
 
 Building the vignettes is optional and the default is FALSE, but this vignette contains some helpful examples of use and of possible outputs. To view the vignette, run these lines:

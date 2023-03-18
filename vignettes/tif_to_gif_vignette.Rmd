@@ -1,5 +1,5 @@
 ---
-title: "How to use tif2gif::tif_to_gif"
+title: "tif_to_gif_vignette"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{tif_to_gif_vignette}
@@ -17,7 +17,8 @@ knitr::opts_chunk$set(
 Load packages
 ```{r setup, messages = FALSE}
 library(tif2gif)
-suppressMessages(library(here))
+library(here)
+library(purrr)
 ```
 
 ## Generate a single GIF
