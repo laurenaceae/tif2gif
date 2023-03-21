@@ -25,7 +25,7 @@ tif_to_gif <- function(prefix, suffix, frames_per_sec = 1, path_to_folder, outpu
   # find the files and sort them into a list
   tif_list <- gtools::mixedsort(list.files(path = path_to_folder, pattern=pattern_here, all.files=TRUE, full.names=TRUE,),decreasing = TRUE)
   # convert all files to raster
-  lapply(tif_list,raster)
+  lapply(tif_list,raster::raster)
   # brick and stack the rasters
   all_tifs <- raster::stack(tif_list)
   b_tifs <- raster::brick(all_tifs)
