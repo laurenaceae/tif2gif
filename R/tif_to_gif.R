@@ -37,5 +37,5 @@ tif_to_gif <- function(prefix, suffix, frames_per_sec = 1, path_to_folder, outpu
   if(missing(prefix) & missing(suffix)){output_file_name <- paste0(output_name, "_", prefix, "_", suffix, ".gif")}
   else{output_file_name <- paste0(output_name, "_", prefix, "_", suffix, ".gif")}
   # create gif output
-  tamp::tmap_animation(anim, fps = frames_per_sec, filename = paste0(output_location, "/", output_file_name))
+  tmap::tmap_animation(anim, fps = frames_per_sec, filename = paste0(output_location, "/", output_file_name))
 }
